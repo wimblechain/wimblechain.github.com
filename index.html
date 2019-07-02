@@ -24,7 +24,24 @@
 		display: inline-block;
 		font-size:4em;
 	}
+	.hidden {
+		display: none;
+	}
+	#mw_try {
+		text-decoration: underline;
+		line-height: 3em;
+	}
+	#mw_try:hover {
+		cursor: pointer;
+		color: #6666ff;
+	}
+	#mw_res {
+		background-color: #fff;
+		border: 1px dashed #666;
+		padding: 24px;
+	}
 </style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -49,12 +66,51 @@
 			WimbleChain uses an original MimbleWimble implementation to create blinded transactions, verified by summing the kernel offsets of each transaction. This is done by introducing Pederson commitments to the BTC blockchain through use of a sidechain. The sidechain functions on 60s block times, and commitments irreversibly to the BTC chain every time a new BTC block is mined. This vastly lowers hashpower requirements needed to implement MimbleWimble as an altcoin, and instead allows the Bitcoin chain to include simpler, smaller transfers of Wimble. Wimble are Wrapped MW blinded values that represent actualy Bitcoin, and are therefore interchangeable with Bitcoin in a private, highly scalable environment.
 		</p>
 
+		<h3>Try an example transaction</h3>
+		<p>
+			Let's demonstrate how MimbleWimble works with a simple demo.<br />
+			In this example we'll have a user send X coins from their balance, and write a Pedersen Commitment that represents the transaction.
+		</p>
+		<strong id="mw_try">Try it &raquo;</strong>
+		<div id="demo" class="hidden">
+			Balance (BTC):<br />
+			<input type="number" placeholder="500" value="500" id="mw_bal" /><br /><br />
+			Amount of BTC to send:<br />
+			<input type="number" placeholder="200" value="200" id="mw_amt" /> BTC<br /><br />
+			<input type="submit" value="Calculate" id="mw_calc" /><br /><br />
+			<div id="mw_res"></div>
+		</div>
+		<script>
+			$("#mw_try").click(function() {
+				$("#mw_try").hide();
+				$("#demo").fadeIn();
+			});
+			$("#mw_calc").click(function(target) {
+				let bal = $("#mw_bal").val();
+				let amt = $("#mw_amt").val();
+				let blind_factor = 1e8*Math.random();
+				let res = "Randomly selected blinding factor: ";
+				res += blind_factor;
+				res += "<br />";
+				res += "Resulting commitment value: ";
+				res += blind_factor * amt;
+				res += "<br />";
+				res += "<br />If you saw "+ blind_factor * amt + " on your block explorer.<br />Would you be able to determine the quantity of coins sent?";
+				res += "<br /><strong>This is the power of MimbleWimble, and WimbleChain brings it to Bitcoin.</strong>";
+				$("#mw_res").html(res);
+			});
+		</script>
+
 		<h3>Contributing</h3>
 		<p>
-		WimbleChain is in an early phase of development. If you are interested in joining, find us on Gitter at <a href="https://gitter.im/wimblechain/community">https://gitter.im/wimblechain</a>
-		You can also follow along with our newsletter. Sign up here: <a href="https://trawk.typeform.com/to/CE5p72">https://trawk.typeform.com/to/CE5p72</a>
+		WimbleChain is in an early phase of development.<br />
+		If you are interested in joining, or want to learn more, find us on Gitter.<br />
+		WimbleChain Gitter: <a href="https://gitter.im/wimblechain/community">https://gitter.im/wimblechain</a><br /><br />
 
+		You can also follow along with our newsletter.<br />
+		WimbleChain Newsletter: <a href="https://trawk.typeform.com/to/CE5p72">https://trawk.typeform.com/to/CE5p72</a>
 		</p>
+
 	</div>
 </body>
 
