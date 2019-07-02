@@ -1,0 +1,61 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+	<title>WimbleChain</title>
+<style>
+	* {
+		font-family: 'Ubuntu Mono', monospace;
+	}
+	body {
+		background-color: #666;
+	}
+	#page {
+		background-color: #FFfee6;
+		width: 800px;
+		margin: auto;
+		padding: 24px;
+	}
+	.logo {
+		display: inline-block;
+		bottom: -20px;
+		position: relative;
+	}
+	.title {
+		display: inline-block;
+		font-size:4em;
+	}
+</style>
+</head>
+
+<body>
+	<div id="page">
+		<img src="logo-mw.png" width=100 class="logo" />
+		<h1 class="title">WimbleChain</h1>
+		<p>
+			Basic MimbleWimble implementation for Bitcoin.
+		</p>
+
+		<h3>Benefits</h3>
+		<ol>
+			<li>Massively lower blockchain size (1,000x smaller)</li>
+			<li>One minute block times</li>
+			<li>Lightning network compatible</li>
+			<li>Compatible with existing Bitcoin software</li>
+			<li>Private transactions</li>
+		</ol>
+
+		<h3>How it works</h3>
+		<p>
+			WimbleChain uses an original MimbleWimble implementation to create blinded transactions, verified by summing the kernel offsets of each transaction. This is done by introducing Pederson commitments to the BTC blockchain through use of a sidechain. The sidechain functions on 60s block times, and commitments irreversibly to the BTC chain every time a new BTC block is mined. This vastly lowers hashpower requirements needed to implement MimbleWimble as an altcoin, and instead allows the Bitcoin chain to include simpler, smaller transfers of Wimble. Wimble are Wrapped MW blinded values that represent actualy Bitcoin, and are therefore interchangeable with Bitcoin in a private, highly scalable environment.
+		</p>
+
+		<h3>Contributing</h3>
+		<p>
+		WimbleChain is in an early phase of development. If you are interested in joining, find us on Gitter at <a href="https://gitter.im/wimblechain/community">https://gitter.im/wimblechain</a>
+
+		</p>
+	</div>
+</body>
+
+</html>
+
